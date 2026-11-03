@@ -1,0 +1,98 @@
+:root {
+  --pico-font-size: 100%;
+}
+
+body {
+  padding-bottom: 4.5rem; /* 下部タブの分 */
+}
+
+main.container {
+  padding-top: 1rem;
+}
+
+.muted {
+  color: var(--pico-muted-color);
+  font-size: 0.85rem;
+}
+
+.danger {
+  color: var(--pico-del-color);
+}
+
+/* 部品一覧の行 */
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.list li {
+  list-style: none;
+  border-bottom: 1px solid var(--pico-muted-border-color);
+  padding: 0.6rem 0;
+  margin: 0;
+}
+.list li button.item {
+  all: unset;
+  display: block;
+  width: 100%;
+  cursor: pointer;
+}
+.list li .title {
+  font-weight: 600;
+}
+
+/* 下部タブ */
+nav.tabs {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-around;
+  background: var(--pico-background-color);
+  border-top: 1px solid var(--pico-muted-border-color);
+  padding: 0.4rem 0 calc(0.4rem + env(safe-area-inset-bottom));
+}
+nav.tabs button {
+  all: unset;
+  cursor: pointer;
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--pico-muted-color);
+  padding: 0.2rem 1rem;
+}
+nav.tabs button .icon {
+  display: block;
+  font-size: 1.3rem;
+  line-height: 1.4;
+}
+nav.tabs button.active {
+  color: var(--pico-primary);
+}
+
+/* 在庫の ± */
+.stepper {
+  display: grid;
+  grid-template-columns: 3.5rem 1fr 3.5rem;
+  align-items: center;
+  gap: 0.5rem;
+}
+.stepper button {
+  margin: 0;
+  font-size: 1.4rem;
+  padding: 0.3rem 0;
+}
+.stepper .qty {
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.row {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+.row > * {
+  margin-bottom: 0;
+}
