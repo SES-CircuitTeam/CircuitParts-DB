@@ -197,6 +197,21 @@ create policy "members update" on public.stock for update using (public.is_membe
 create policy "members delete" on public.stock for delete using (public.is_member());
 
 -- =========================================================
+-- アクセス権（"Automatically expose new tables" をオフにしたプロジェクト向け）
+-- ログイン済みのユーザーにだけ API からの操作を許可し、実際の制限は上の RLS で行う
+-- =========================================================
+
+grant usage on schema public to authenticated;
+grant select, insert, update, delete on all tables in schema public to authenticated;
+grant usage, select on all sequences in schema public to authenticated;
+grant execute on function
+  public.current_email(),
+  public.is_member(),
+  public.is_admin(),
+  public.adjust_stock(bigint, integer)
+to authenticated;
+
+-- =========================================================
 -- 初期データ（自分たちの値に書き換えて実行）
 -- =========================================================
 
